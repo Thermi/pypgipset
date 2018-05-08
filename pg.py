@@ -80,7 +80,7 @@ BLUETACK=[
     ]
 
 ENABLE_BLUETACK=True
-ENABLE_COUNTRY=False
+ENABLE_COUNTRY=True
 ENABLE_TORBLOCK=True
 
 def eprint(*args, **kwargs):
@@ -361,6 +361,8 @@ class pgPy:
             # this file only contains CIDR subnets
             theseLines=i.decode().split("\n")
             for j in theseLines:
+                if j == "":
+                    continue
                 self.duplicateList.append(ipaddress.IPv4Network(j))
 
     # gets the tor block list
